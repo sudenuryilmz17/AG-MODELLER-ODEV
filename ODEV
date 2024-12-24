@@ -1,0 +1,42 @@
+SORU 1) aşağıda verilen graf detaylarına göre göre A deposundan F deposuna olan en kısa yolu dijkstra Algoritması ile python dilini kullanarak bulunuz graf detayları : A,B,C,D,E,F Kenar ve ağırlıkları: A→B:6 , A→D: 1, B→C: 5, B→E: 2, C→F: 8, D→B: 2, D→E: 6, E→F: 3
+
+Çözüm: import networkx as nx
+
+G = nx.Graph()
+
+edges = [ ('A', 'B', 6), ('A', 'D', 1), ('B', 'C', 5), ('B', 'E', 2), ('C', 'F', 8), ('D', 'B', 2), ('D', 'E', 6), ('E', 'F', 3) ]
+
+G.add_weighted_edges_from(edges)
+
+source = 'A' target = 'F'
+
+path = nx.dijkstra_path(G, source, target) length = nx.dijkstra_path_length(G, source, target)
+
+print("En kısa yol:", path) print("Yol uzunluğu:", length)
+
+SORU 2) aşağıda verilen bağlantılara ve ağırlıklara sahip bir ağı inceleyerek  prim Algoritması veya kruvskav algoritması ile  ile python dilini kullanarak bul  graf detayları : A,B,C,D,E,F Kenar ve ağırlıkları: A→B:4 , A→C: 2, B→C: 5, B→D: 10, C→D: 3, C→E: 8, D→E: 4, D→F:6,  E→F: 1
+import networkx as nx
+
+
+G = nx.Graph()
+
+
+edges = [
+    ('A', 'B', 4),
+    ('A', 'C', 2),
+    ('B', 'C', 5),
+    ('B', 'D', 10),
+    ('C', 'D', 3),
+    ('C', 'E', 8),
+    ('D', 'E', 4),
+    ('D', 'F', 6),
+    ('E', 'F', 1)
+]
+
+G.add_weighted_edges_from(edges)
+
+
+mst = nx.minimum_spanning_tree(G)
+
+
+print("MST Kenarları:", mst.edges(data=True))
